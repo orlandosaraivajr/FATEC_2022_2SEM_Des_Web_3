@@ -33,3 +33,15 @@ for i in dados:
         pass 
     except IndexError: 
         print('Erro de index') 
+
+
+'''
+Ao explorar a lista (dados), crie um dicionário cuja chave seja
+o número do professor e o valor seja uma lista com o nome e unidade do professor.
+
+A Estrutura de dado válida possui os seguintes campos 
+(<numero>, <nome>, <unidade>)
+
+Todos os outros registros devem ser ignorados.
+'''
+
