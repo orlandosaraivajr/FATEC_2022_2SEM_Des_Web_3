@@ -1,3 +1,6 @@
+import re
+
+
 dados = []
 dados.append((1, 'Orlando', 'Fatec Araras'))
 dados.append((2, 'Nilton', 'Fatec Araras'))
@@ -18,7 +21,7 @@ Crie um programa que imprima somente os nomes dos professores.
 A Estrutura de dado com os campos que queremos possui a seguinte estrutura:
 (<numero>, <nome>, <unidade>)
 '''
-
+'''
 for i in dados:
     if type(i) == tuple:
         if len(i) == 3:
@@ -33,7 +36,7 @@ for i in dados:
         pass 
     except IndexError: 
         print('Erro de index') 
-
+'''
 
 '''
 Ao explorar a lista (dados), crie um dicionário cuja chave seja
@@ -45,3 +48,13 @@ A Estrutura de dado válida possui os seguintes campos
 Todos os outros registros devem ser ignorados.
 '''
 
+def lista_para_dicionario(dados):
+    dicionario = {}
+    for registro in dados:
+        if type(registro) == tuple:
+            if len(registro) == 3:
+                if type(registro[1]) == str:
+                    dicionario[registro[0]] = [registro[1], registro[2]]
+    return dicionario
+
+agenda = lista_para_dicionario(dados)
