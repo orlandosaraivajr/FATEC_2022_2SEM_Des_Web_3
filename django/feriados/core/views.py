@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def natal(request):
-    return HttpResponse("Não é natal.")
+    return render(request, 'natal.html')
