@@ -6,3 +6,7 @@ class FeriadoModel(models.Model):
     dia = models.IntegerField('Data')
     mes = models.IntegerField('Mes')
     modificado_em = models.DateTimeField(verbose_name='modificado em', auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return self.nome + '=> ' + str(self.dia)
+    

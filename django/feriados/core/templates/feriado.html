@@ -5,10 +5,11 @@
             <title>Feriado de Natal</title>
         </head>
         <body>
-            {% if natal %}
-        <h1>É natal</h1>
+            {% if feriado %}
+                <h1>Hoje é:</h1>
+                {{ nome }}
             {% else %}
-        <h1>Não é natal</h1>
+                <h1>Lamento, hoje não tem feriado.</h1>
             {% endif %}
         </body>
 </html>

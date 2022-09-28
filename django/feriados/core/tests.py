@@ -1,7 +1,9 @@
-from django.test import TestCase    
+from django.test import TestCase 
+from core.models import FeriadoModel
+from datetime import datetime
 
 
-class NatalTest(TestCase):
+class SemFeriadoTest(TestCase):
     def setUp(self):
         self.resp = self.client.get('/')
 
@@ -9,14 +11,35 @@ class NatalTest(TestCase):
         self.assertEqual(200, self.resp.status_code)
 
     def test_texto(self):
-        self.assertContains(self.resp, 'natal')
+        self.assertContains(self.resp, 'Lamento')
+        self.assertContains(self.resp, 'hoje não tem feriado.')
 
     def test_template_natal(self):
-        self.assertTemplateUsed(self.resp, 'natal.html')
+        self.assertTemplateUsed(self.resp, 'feriado.html')
 
 
-from core.models import FeriadoModel
-from datetime import datetime
+class PossuiFeriadoTest(TestCase):
+    def setUp(self):
+        hoje = datetime.today()
+        dia=hoje.day
+        mes=hoje.month
+        feriado = FeriadoModel(nome='Dia do Saci', dia=dia, mes=mes)
+        feriado.save()
+        self.resp = self.client.get('/')
+
+    def test_dados_no_banco_fake(self):
+        self.assertTrue(FeriadoModel.objects.exists())
+
+    def test_200_response(self):
+        self.assertEqual(200, self.resp.status_code)
+
+    def test_texto(self):
+        self.assertContains(self.resp, 'Dia do Saci')
+
+    def test_template_natal(self):
+        self.assertTemplateUsed(self.resp, 'feriado.html')
+
+
 
 class FeriadoModelTest(TestCase):
     def setUp(self):
