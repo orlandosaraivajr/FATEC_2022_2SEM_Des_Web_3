@@ -21,9 +21,7 @@ class SemFeriadoTest(TestCase):
 class PossuiFeriadoTest(TestCase):
     def setUp(self):
         hoje = datetime.today()
-        dia=hoje.day
-        mes=hoje.month
-        feriado = FeriadoModel(nome='Dia do Saci', dia=dia, mes=mes)
+        feriado = FeriadoModel(nome='Dia do Saci', dia=hoje.day, mes=hoje.month)
         feriado.save()
         self.resp = self.client.get('/')
 
