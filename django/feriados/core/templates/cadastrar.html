@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+    <head>
+        <meta charset="UTF-8">
+            <title>Cadastro de Feriados</title>
+        </head>
+        <body>
+            <form action='/cadastro' method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form }}
+                    <input type="submit" value="Cadastro"/>              
+            </form>
+        </body>
+</html>
