@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 
@@ -10,3 +11,7 @@ class FeriadoModel(models.Model):
     def __str__(self):
         return self.nome + '=> ' + str(self.dia)
     
+    class Meta:
+        verbose_name = 'Feriado'
+        verbose_name_plural = 'Feriados'
+        ordering = ('mes','-dia')
